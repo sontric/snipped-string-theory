@@ -44,7 +44,10 @@ def write_report(lines, out_path):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--alluredir", default="allure-dir", help="Allure results dir")
+    
+    # NOTE: "allure-results" keyword / folder also referenced in readme.md
+    parser.add_argument("--alluredir", default="allure-results", help="Allure results dir")
+
     parser.add_argument("--output", default="allure-report.md", help="Output .md file")
     args = parser.parse_args()
 
