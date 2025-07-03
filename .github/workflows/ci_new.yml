@@ -1,0 +1,48 @@
+name: CI Test Suite
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  push:
+    branches: [ "main"]
+  pull_request:
+    branches: [ "main"]
+  workflow_dispatch:
+
+jobs:
+  ci-tests:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Set up Python & Poetry
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.12"
+      run: |
+        python -m pip install --upgrade pip
+        pip install poetry
+
+    - name: Install Allure CLI
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y openjdk-11-jre
+        curl -o allure.tgz -L https://github.com/allure-framework/allure2/releases/download/2.33.0/allure-2.33.0.tgz
+        tar -zxvf allure.tgz -C /opt/
+        sudo ln -s /opt/allure-2.33.0/bin/allure /usr/bin/allure
+
+    - name: Check out code & install as a package
+      uses: actions/checkout@v4
+      run: |
+        poetry install 
+
+    - name: Run tests with pytest and generate Allure results
+      run: |
+        mkdir -p allure-results
+        poetry run pytest tests --alluredir=allure-results
+        allure generate --single-file allure-results -o allure-report --clean
+
+    - name: Upload Allure report HTML as an artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: allure-report
+        path: allure-report/index.html
