@@ -38,6 +38,11 @@ jobs:
           tar -xzf allure-2.34.1.tgz
           ./allure-2.34.1/bin/allure generate allure-results --clean -o allure-report
 
+      - name: Strip Google Analytics before inlining
+        run: |
+          sed -i '/gtag\/js/d' allure-report/index.html || true
+          sed -i '/G-FVWC4GKEYS/d' allure-report/index.html || true
+          npx html-inline allure-report/index.html > allure-report.html
 
       - name: Inline HTML into Single File
         run: |
