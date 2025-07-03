@@ -40,6 +40,8 @@ jobs:
         poetry install 
 
     - name: Run tests with pytest and generate Allure results
+      env:
+        WOLFRAM_APP_ID: ${{ secrets.WOLFRAM_APP_ID }}
       run: |
         mkdir -p allure-results
         poetry run pytest tests --alluredir=allure-results
