@@ -32,8 +32,10 @@ jobs:
         tar -zxvf allure.tgz -C /opt/
         sudo ln -s /opt/allure-2.33.0/bin/allure /usr/bin/allure
 
-    - name: Check out code & install as a package
+    - name: Check out code
       uses: actions/checkout@v4
+
+    - name: Install Package
       run: |
         poetry install 
 
