@@ -1,0 +1,28 @@
+[project]
+name = "signed-spiral-unification"
+version = "0.1.0"
+description = "foundational unification model"
+authors = [
+    {name = "dnobs",email = "218375616+thegardeners@users.noreply.github.com"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = "^3.12"
+dependencies = [
+    "pytest (>=8.4.1,<9.0.0)",
+    "allure-pytest (>=2.14.3,<3.0.0)",
+    "numpy (>=2.3.1,<3.0.0)",
+    "wolframalpha (>=5.1.3,<6.0.0)",
+    "sympy (>=1.14.0,<2.0.0)",
+    "python-dotenv (>=1.1.1,<2.0.0)",
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+packages = [
+    { include = "spiral_unification", from = "src" }
+]
