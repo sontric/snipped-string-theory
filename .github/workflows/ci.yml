@@ -2,12 +2,14 @@ name: CI
 
 on:
   schedule:
-    - cron: '0 * * * *'  # Runs at the top of every hour
-  workflow_dispatch:     # Allows manual triggering
+    - cron: '0 * * * *'  # Hourly
+  workflow_dispatch:
   push:
-    branches: [main]
+    branches:
+      - main
   pull_request:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
   test:
