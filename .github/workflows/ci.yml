@@ -1,4 +1,4 @@
-name: Hourly Allure Test Report
+name: CI
 
 on:
   schedule:
@@ -27,6 +27,8 @@ jobs:
         run: poetry install
 
       - name: Run Pytest with Allure
+        env:
+            WOLFRAM_APP_ID: ${{ secrets.WOLFRAM_APP_ID }}
         run: |
           poetry run pytest --alluredir=allure-results
 
