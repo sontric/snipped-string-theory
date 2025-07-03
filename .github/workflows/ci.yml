@@ -66,3 +66,9 @@ jobs:
       run: |
         sudo apt install pandoc texlive-latex-extra
         pandoc allure-report.md -o allure-report.pdf
+
+    - name: Upload Allure PDF report
+      uses: actions/upload-artifact@v4
+      with:
+        name: allure-report-pdf
+        path: allure-report.pdf
