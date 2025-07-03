@@ -1,6 +1,4 @@
-from sympy import symbols, Function, diff, simplify
-
-from sympy import symbols, exp, I, simplify
+from sympy import symbols, exp, I, simplify, Eq, solve, diff, simplify, Function
 from sympy.abc import t, x
 
 def test_klein_gordon_plane_wave():
@@ -15,3 +13,18 @@ def test_klein_gordon_plane_wave():
 
     assert simplify(kg_expr_sub) == 0
 
+def test_e_equals_mc2_waveform():
+    hbar, omega, m, c = symbols("hbar omega m c", positive=True, real=True)
+    k = 0  # particle at rest
+
+    # Dispersion relation from Klein-Gordon
+    dispersion_eq = Eq(omega**2, k**2 + (m * c**2 / hbar)**2)
+
+    # Solve for omega
+    omega_solution = solve(dispersion_eq, omega)[1]  # positive root
+
+    # Energy = hbar * omega
+    E = hbar * omega_solution
+    expected = m * c**2
+
+    assert simplify(E - expected) == 0
