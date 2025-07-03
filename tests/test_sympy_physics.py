@@ -17,14 +17,19 @@ def test_e_equals_mc2_waveform():
     hbar, omega, m, c = symbols("hbar omega m c", positive=True, real=True)
     k = 0  # particle at rest
 
-    # Dispersion relation from Klein-Gordon
-    dispersion_eq = Eq(omega**2, k**2 + (m * c**2 / hbar)**2)
+    # Dispersion relation: from Klein-Gordon
+    # Dispersion relation: omega^2 = k^2 + (m*c^2/hbar)^2
+    dispersion_eq = Eq(omega**2, (m * c**2 / hbar)**2)
 
     # Solve for omega
-    omega_solution = solve(dispersion_eq, omega)[1]  # positive root
+    omega_solutions = solve(dispersion_eq, omega)
 
-    # Energy = hbar * omega
-    E = hbar * omega_solution
+    # Filter for the positive solution (omega > 0 by assumption)
+    omega_solution = [sol for sol in omega_solutions if sol.is_positive]
+    assert len(omega_solution) == 1  # make sure we got a unique positive result
+
+    # E = hbar * omega
+    E = hbar * omega_solution[0]
     expected = m * c**2
 
     assert simplify(E - expected) == 0
