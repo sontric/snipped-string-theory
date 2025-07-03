@@ -64,5 +64,5 @@ jobs:
 
     - name: Generate Allure PDF report
       run: |
-        sudo apto install pandoc
+        sudo apt install pandoc
         pandoc allure-report.md -o allure-report.pdf
