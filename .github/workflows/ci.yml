@@ -44,7 +44,7 @@ jobs:
         WOLFRAM_APP_ID: ${{ secrets.WOLFRAM_APP_ID }}
       run: |
         mkdir -p allure-results
-        poetry run pytest tests --alluredir=allure-results --md pytest-results.md
+        poetry run pytest tests --alluredir=allure-results
         allure generate --single-file allure-results -o allure-report --clean
 
     - name: Upload Allure report HTML as an artifact
