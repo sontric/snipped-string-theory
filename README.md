@@ -1,4 +1,6 @@
 # Signed Spiral Unification
+![CI](https://github.com/thegardeners/signed_spiral_unification/actions/workflows/ci.yml/badge.svg)
+
 
 This repository introduces the **Signed Spiral Theorem** as a foundational model for unifying:
 
