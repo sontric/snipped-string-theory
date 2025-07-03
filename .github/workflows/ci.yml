@@ -47,21 +47,22 @@ jobs:
         poetry run pytest tests --alluredir=allure-results --md pytest-results.md
         allure generate --single-file allure-results -o allure-report --clean
 
-            - name: Upload Allure report HTML as an artifact
+    - name: Upload Allure report HTML as an artifact
       uses: actions/upload-artifact@v4
       with:
-        name: allure-report
+        name: allure-report-html
         path: allure-report/index.html
 
-    - name: Install wkhtmltopdf
-      run: sudo apt-get update && sudo apt-get install -y wkhtmltopdf
+    - name: Generate Allure Markdown report
+      run: poetry run python src/allure-md.py --alluredir=allure-results
 
-    - name: Convert Allure HTML to PDF
-      run: |
-        mkdir -p artifacts
-        wkhtmltopdf allure-report/index.html artifacts/test-report.pdf
-    - name: Upload Allure PDF Report
+    - name: Upload Allure Markdown report
       uses: actions/upload-artifact@v4
       with:
-        name: allure-report-pdf
-        path: artifacts/test-report.pdf
+        name: allure-report-md
+        path: allure-report.md
+
+    - name: Generate Allure PDF report
+      run: |
+        sudo apto install pandoc
+        pandoc allure-report.md -o allure-report.pdf
