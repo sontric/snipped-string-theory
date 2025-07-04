@@ -19,7 +19,7 @@ def timestamp_fmt(ms):
 
 def format_report(results):
     lines = []
-    lines.append("# 🧾 Allure Audit Report\n")
+    lines.append("# Test Execution Report\n")
     lines.append("| Test | Status | Start | Stop | Duration (s) | Error Message |")
     lines.append("|------|--------|-------|------|--------------|----------------|")
 
