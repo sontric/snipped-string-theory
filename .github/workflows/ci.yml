@@ -72,6 +72,8 @@ jobs:
             --pinentry-mode loopback \
             --output allure-report-index.html.asc \
             --armor --sign allure-report/index.html
+      env:
+        GPG_PRIVATE_KEY: ${{ secrets.GPG_PASSPHRASE }
 
     - name: Sign Allure Markdown report (GPG)
       run: |
@@ -80,6 +82,8 @@ jobs:
             --pinentry-mode loopback \
             --output allure-report.md.asc \
             --armor --sign allure-report.md
+      env:
+        GPG_PRIVATE_KEY: ${{ secrets.GPG_PASSPHRASE }
 
     - name: Sign Allure PDF report (GPG)
       run: |
