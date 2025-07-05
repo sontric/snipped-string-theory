@@ -9,6 +9,11 @@ on:
     branches: [ "main"]
   workflow_dispatch:
 
+permissions:
+  contents: read
+  secrets: read
+  actions: write
+
 jobs:
   ci-tests:
     runs-on: ubuntu-latest
