@@ -1,4 +1,4 @@
-# Snipped String Theory  
+# Snipped String Theory / Signed Spiral Theorm
 ![CI](https://github.com/thegardeners/signed_spiral_unification/actions/workflows/ci.yml/badge.svg)
 
 > “This is water.”
