@@ -9,6 +9,8 @@ This repository introduces the **Signed Spiral Theorem (SST)** as a foundational
 - 🧵 String Theory
 - ⚛️ Mass-Energy Equivalence (E = mc²)
 
+In short, we observed Klein–Gordon <==> Apparent Power
+
 ---
 
 ## 🌌 Highlights
