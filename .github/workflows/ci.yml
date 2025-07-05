@@ -43,7 +43,7 @@ jobs:
       run: |
         poetry install 
 
-    - name: Run tests with pytest and generate Allure results
+    - name: Run tests via pytest then generate Allure HTML report
       env:
         WOLFRAM_APP_ID: ${{ secrets.WOLFRAM_APP_ID }}
       run: |
@@ -51,31 +51,13 @@ jobs:
         poetry run pytest tests --alluredir=allure-results
         allure generate --single-file allure-results -o allure-report --clean
 
-    - name: Upload Allure report HTML as an artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: allure-report-html
-        path: allure-report/index.html
-
-    - name: Generate Allure Markdown report
+    - name: Generate Markdown report via allure-results dir
       run: poetry run python src/allure-md.py --alluredir=allure-results
 
-    - name: Upload Allure Markdown report
-      uses: actions/upload-artifact@v4
-      with:
-        name: allure-report-md
-        path: allure-report.md
-
-    - name: Generate Allure PDF report
+    - name: Generate PDF report via Markdown report
       run: |
         sudo apt install pandoc texlive-latex-extra
         pandoc allure-report.md -o allure-report.pdf
-
-    - name: Upload Allure PDF report
-      uses: actions/upload-artifact@v4
-      with:
-        name: allure-report-pdf
-        path: allure-report.pdf
 
     - name: Import GPG private key
       run: |
@@ -110,3 +92,21 @@ jobs:
       with:
         name: allure-report-pdf-signed
         path: allure-report.pdf.asc
+
+    - name: Upload Allure report HTML as an artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: allure-report-html
+        path: allure-report/index.html
+
+    - name: Upload Allure Markdown report
+      uses: actions/upload-artifact@v4
+      with:
+        name: allure-report-md
+        path: allure-report.md
+        
+    - name: Upload Allure PDF report
+      uses: actions/upload-artifact@v4
+      with:
+        name: allure-report-pdf
+        path: allure-report.pdf
