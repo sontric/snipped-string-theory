@@ -1,18 +1,18 @@
 # Snipped-String-Theory / "Signed Spiral Theorem"
 ![CI](https://github.com/thegardeners/signed_spiral_unification/actions/workflows/ci.yml/badge.svg)
 
-> “This is water.”
-
 This repository introduces the **Signed Spiral Theorem (SST)** as a foundational model for unifying:
 
 - 🧬 Quantum Mechanics (Standard Model)
 - 🧵 String Theory
 - ⚛️ Mass-Energy Equivalence (E = mc²)
 
-We observed a similarity between: Klein–Gordon <==> Apparent Power
-We propose: Apparent power is the a classical limit of Klein–Gordon behavior in macroscopic systems
-We propose: A unified theory of resonance
-
+## Background
+- We observed a mathematical similarity between Klein–Gordon and apparent power (VA).
+- We postulated apparent power is the classical limit of Klein–Gordon behavior in macroscopic systems.
+- We believe this perspective provides a unified theory of resonance.
+- We don't know what to do next.
+> “This is water.” 
 ---
 
 ## 🌌 Highlights
