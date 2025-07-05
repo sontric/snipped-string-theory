@@ -87,6 +87,7 @@ jobs:
       run: |
         echo "$GPG_PASSPHRASE" | \
         gpg --batch --yes --passphrase-fd 0 \
+            --pinentry-mode loopback \
             --output allure-report.md.asc \
             --armor --sign allure-report.md
       env:
