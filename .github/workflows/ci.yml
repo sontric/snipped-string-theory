@@ -72,3 +72,27 @@ jobs:
       with:
         name: allure-report-pdf
         path: allure-report.pdf
+
+    - name: Sign Allure Markdown report (GPG)
+      run: |
+        echo "$GPG_PRIVATE_KEY" > private.key
+        gpg --batch --import private.key
+        echo "$GPG_PASSPHRASE" | gpg --batch --yes --passphrase-fd 0 --output allure-report.md.asc --armor --sign allure-report.md
+
+    - name: Upload Signed Allure Markdown Report
+      uses: actions/upload-artifact@v4
+      with:
+        name: allure-report-md-signed
+        path: allure-report.md.asc
+
+    - name: Sign Allure PDF report (GPG)
+      run: |
+        echo "$GPG_PRIVATE_KEY" > private.key
+        gpg --batch --import private.key
+        echo "$GPG_PASSPHRASE" | gpg --batch --yes --passphrase-fd 0 --output allure-report.pdf.asc --armor --sign allure-report.pdf
+
+    - name: Upload Signed Allure PDF Report
+      uses: actions/upload-artifact@v4
+      with:
+        name: allure-report-pdf-signed
+        path: allure-report.pdf.asc
