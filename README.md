@@ -1,4 +1,4 @@
-# Signed Spiral Unification
+# Snipped String Theory
 ![CI](https://github.com/thegardeners/signed_spiral_unification/actions/workflows/ci.yml/badge.svg)
 
 
