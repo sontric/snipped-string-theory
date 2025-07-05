@@ -65,6 +65,14 @@ jobs:
       env:
         GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
 
+    - name: Sign Allure HTML report (GPG)
+      run: |
+        echo "$GPG_PASSPHRASE" | \
+        gpg --batch --yes --passphrase-fd 0 \
+            --pinentry-mode loopback \
+            --output allure-report-index.html.asc \
+            --armor --sign allure-report/index.html
+
     - name: Sign Allure Markdown report (GPG)
       run: |
         echo "$GPG_PASSPHRASE" | \
@@ -72,21 +80,29 @@ jobs:
             --pinentry-mode loopback \
             --output allure-report.md.asc \
             --armor --sign allure-report.md
+
+    - name: Sign Allure PDF report (GPG)
+      run: |
+        echo "$GPG_PASSPHRASE" | \
+        gpg --batch --yes --passphrase-fd 0 \
+            --pinentry-mode loopback \
+            --output allure-report.pdf.asc \
+            --armor --sign allure-report.pdf
       env:
         GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+
+    - name: Upload Signed Allure HTML Report
+      uses: actions/upload-artifact@v4
+      with:
+        name: allure-report-index-html-signed
+        path: allure-report-index.html.asc
 
     - name: Upload Signed Allure Markdown Report
       uses: actions/upload-artifact@v4
       with:
         name: allure-report-md-signed
         path: allure-report.md.asc
-
-    - name: Sign Allure PDF report (GPG)
-      run: |
-        echo "$GPG_PRIVATE_KEY" > private.key
-        gpg --batch --import private.key
-        echo "$GPG_PASSPHRASE" | gpg --batch --yes --passphrase-fd 0 --output allure-report.pdf.asc --armor --sign allure-report.pdf
-
+        
     - name: Upload Signed Allure PDF Report
       uses: actions/upload-artifact@v4
       with:
