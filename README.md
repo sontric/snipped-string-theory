@@ -9,7 +9,9 @@ This repository introduces the **Signed Spiral Theorem (SST)** as a foundational
 - 🧵 String Theory
 - ⚛️ Mass-Energy Equivalence (E = mc²)
 
-In short, we observed Klein–Gordon <==> Apparent Power
+We observed a similarity between: Klein–Gordon <==> Apparent Power
+We propose: Apparent power is the a classical limit of Klein–Gordon behavior in macroscopic systems
+We propose: A unified theory of resonance
 
 ---
 
