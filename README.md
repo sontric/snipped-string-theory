@@ -11,7 +11,7 @@ This repository introduces the **Signed Spiral Theorem (SST)** as a foundational
 
 ---
 
-## 🌌 Highlights
+## 🌌 Highlights (Galaxy)
 
 - Spiral-based derivation of energy, mass, and identity
 - Pytest suite for validating waveform-based physics
