@@ -70,6 +70,7 @@ jobs:
         echo "$GPG_PASSPHRASE" | \
         gpg --batch --yes --passphrase-fd 0 \
             --pinentry-mode loopback \
+            --passphrase "$GPG_PASSPHRASE" \
             --output allure-report-index.html.asc \
             --armor --sign allure-report/index.html
       env:
@@ -80,6 +81,7 @@ jobs:
         echo "$GPG_PASSPHRASE" | \
         gpg --batch --yes --passphrase-fd 0 \
             --pinentry-mode loopback \
+            --passphrase "$GPG_PASSPHRASE" \
             --output allure-report.md.asc \
             --armor --sign allure-report.md
       env:
@@ -90,6 +92,7 @@ jobs:
         echo "$GPG_PASSPHRASE" | \
         gpg --batch --yes --passphrase-fd 0 \
             --pinentry-mode loopback \
+            --passphrase "$GPG_PASSPHRASE" \
             --output allure-report.pdf.asc \
             --armor --sign allure-report.pdf
       env:
