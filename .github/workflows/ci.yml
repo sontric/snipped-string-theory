@@ -19,8 +19,7 @@ jobs:
     steps:
 
     - name: Set up Python
-      uses: actions/setup-python@v3
-      with:
+      uses: ac
         python-version: "3.12"
     
     - name: Install Poetry
