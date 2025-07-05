@@ -3,7 +3,7 @@ import os
 import xml.etree.ElementTree as ET
 from sympy import symbols, Eq, solve, sqrt, simplify
 
-def query_wolfram(query, app_id):
+def test_query_wolfram(query, app_id):
     url = "https://api.wolframalpha.com/v2/query"
     params = {
         "appid": app_id,
