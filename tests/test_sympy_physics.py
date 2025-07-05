@@ -32,7 +32,7 @@ def test_e_equals_mc2_waveform():
     E = hbar * omega_solution[0]
     expected = m * c**2
 
-from core import generate_waveform
+from spiral_unification.core import generate_waveform
 def test_mass_energy_waveform_agrees_with_E_equals_mc2():
     waveform = generate_waveform(mass=1.0, c=1.0, hbar=1.0, at_rest=True)
     energy = waveform.energy
