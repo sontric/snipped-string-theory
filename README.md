@@ -26,7 +26,7 @@ This repository introduces the **Signed Spiral Theorem (SST)** as a foundational
 
 ```bash
 poetry install
-pytest --alluredir=allure-results; allure serve allure-results;
+pytest --alluredir=allure-results && allure serve allure-results &&
 poetry run jupyter lab
 ```
 
